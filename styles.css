@@ -1,0 +1,282 @@
+/* ===== BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #f0f0f0;
+  min-height: 100vh;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeInDown 1.2s ease-out;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #e94560;
+  text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* ===== POTION BOTTLE ANIMATION ===== */
+.potion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+.potion-bottle {
+  width: 150px;
+  height: 250px;
+  background: #2c3e50;
+  border-radius: 50% 50% 10px 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s ease;
+}
+
+.potion-bottle:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: #1e90ff;
+  border-radius: 50% 50% 10px 10px;
+  transition: height 1.2s ease-out;
+  animation: bubble 3s infinite;
+}
+
+@keyframes bubble {
+  0%,
+  100% {
+    background: #1e90ff;
+  }
+  50% {
+    background: #4fc3f7;
+  }
+}
+
+/* Animated potion colors triggered by JS */
+.liquid.blue {
+  background: #1e90ff;
+}
+.liquid.red {
+  background: #e94560;
+}
+.liquid.green {
+  background: #4ade80;
+}
+
+/* Glowing effect on active potion */
+.liquid.active {
+  box-shadow: 0 0 30px currentColor;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px currentColor;
+  }
+  to {
+    box-shadow: 0 0 40px currentColor;
+  }
+}
+
+/* ===== BUTTONS WITH HOVER EFFECTS ===== */
+.btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 5px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+#mix-blue:hover ~ .potion-bottle .liquid {
+  height: 70%;
+  background: #1e90ff;
+}
+
+#mix-red:hover ~ .potion-bottle .liquid {
+  height: 70%;
+  background: #e94560;
+}
+
+#mix-green:hover ~ .potion-bottle .liquid {
+  height: 70%;
+  background: #4ade80;
+}
+
+/* ===== FLIP CARD ANIMATION ===== */
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px auto;
+  perspective: 1000px;
+}
+
+.card {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.front {
+  background: rgba(44, 62, 80, 0.8);
+}
+
+.back {
+  background: rgba(100, 21, 150, 0.9);
+  transform: rotateY(180deg);
+}
+
+/* ===== MODAL ANIMATION ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: modalFadeIn 0.5s ease-out;
+}
+
+.modal-content {
+  background: linear-gradient(145deg, #2c3e50, #1a1a2e);
+  margin: 10% auto;
+  padding: 30px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 15px;
+  position: relative;
+  animation: slideUp 0.6s ease-out;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close:hover {
+  color: #fff;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ===== GLOBAL ANIMATIONS ===== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 0.9rem;
+  color: #aaa;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

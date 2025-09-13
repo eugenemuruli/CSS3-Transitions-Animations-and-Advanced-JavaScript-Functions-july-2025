@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magic Potion Lab 🧪</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🧪 Eugene's Magic Potion Lab</h1>
+      <p>Click buttons to mix potions and watch them come alive!</p>
+    </header>
+
+    <main>
+      <!-- Potion Mixer Section -->
+      <section class="potion-mixer">
+        <div class="potion-container">
+          <div id="potion-bottle" class="potion-bottle">
+            <div class="liquid"></div>
+          </div>
+          <div class="controls">
+            <button id="mix-blue" class="btn">Mix Blue Potion</button>
+            <button id="mix-red" class="btn">Mix Red Potion</button>
+            <button id="mix-green" class="btn">Mix Green Potion</button>
+            <button id="flip-card" class="btn">Flip Recipe Card</button>
+            <button id="show-modal" class="btn">Show Secret Formula</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recipe Card (Flippable) -->
+      <div id="recipe-card" class="card-container">
+        <div class="card">
+          <div class="card-face front">
+            <h3>📜 Basic Potion Recipe</h3>
+            <p>Stir clockwise 7 times. Add moonlight.</p>
+          </div>
+          <div class="card-face back">
+            <h3>🗝️ Secret Formula</h3>
+            <p>Blend: 3 drops of starlight + 1 tear of phoenix + silence.</p>
+            <small>(Only visible when flipped)</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Popup -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>✨ Ancient Alchemy Secrets</h2>
+          <p>
+            The true power lies not in the ingredients... but in the intent of
+            the wizard.
+          </p>
+          <p>— Master Alchemist, 427 A.D.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Created with ❤️ by Eugene — CSS & JS Mastery Assignment</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
